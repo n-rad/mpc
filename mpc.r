@@ -120,7 +120,8 @@ ggplot(subset(allDatalong, variable=="Mellow"), aes(x=Dataset,y=value, col=Gende
   theme_bw() +
   theme(legend.position = "none")  # Remove legend
 #anova(lm(value ~ Gender*Dataset, data=subset(allDatalong, variable=="Mellow")))
-ezANOVA(subset(allDatalong, variable=="Mellow"), dv=value, wid=Participant, between=.(Gender, Dataset), observed=.(Gender, Dataset))
+ezANOVA(subset(allDatalong, variable=="Mellow"), dv=value, wid=Participant, between=.(Gender, Dataset), 
+        observed=.(Gender, Dataset))
 ggsave("boxplot_GenderxMellow_raw_new.png", width=5, height=5)
 
 # Mellow scores were significantly different between male and females (F(1,47809)=90.91, p<0.001),
@@ -138,6 +139,14 @@ aggregate(value ~ Dataset, data=subset(allDatalong, variable=="Mellow"), FUN=mea
 # Mellow - Mean and SD
 aggregate(value ~ Gender, data=subset(allDatalong, variable=="Mellow"), FUN=mean, na.rm=T)
 aggregate(value ~ Gender, data=subset(allDatalong, variable=="Mellow"), FUN=sd, na.rm=T)
+
+# Mellow - t-tests for individual dataset gender 
+t.test(Mellow ~ Gender, data=nedaData, var.equal=TRUE)
+t.test(Mellow ~ Gender, data=MUdata, var.equal=TRUE)
+
+#Mellow - Cohen'd d for individual dataset gender
+cohen.d(Mellow ~ Gender, data=nedaData, var.equal=TRUE)
+cohen.d(Mellow ~ Gender, data=MUdata, var.equal=TRUE)
 
 ------
 
@@ -161,6 +170,14 @@ sd(nedaData$Unpretentious, na.rm = TRUE)
 
 aggregate(value ~ Dataset * Gender, data=subset(allDatalong, variable=="Unpretentious"), FUN=mean, na.rm=T)
 aggregate(value ~ Gender, data=subset(allDatalong, variable=="Unpretentious"), FUN=mean, na.rm=T)
+
+# Unpretentious - t-tests for individual dataset gender 
+t.test(Unpretentious ~ Gender, data=nedaData, var.equal=TRUE)
+t.test(Unpretentious ~ Gender, data=MUdata, var.equal=TRUE)
+
+#Unpretentious - Cohen'd d for individual dataset gender
+cohen.d(Unpretentious ~ Gender, data=nedaData, var.equal=TRUE)
+cohen.d(Unpretentious ~ Gender, data=MUdata, var.equal=TRUE)
 
 ------
 
@@ -189,6 +206,14 @@ aggregate(value ~ Gender, data=subset(allDatalong, variable=="Intense"), FUN=mea
 aggregate(value ~ Gender, data=subset(allDatalong, variable=="Intense"), FUN=mean, na.rm=T)
 aggregate(value ~ Gender, data=subset(allDatalong, variable=="Intense"), FUN=sd, na.rm=T)
 
+# Intense - t-tests for individual dataset gender 
+t.test(Intense ~ Gender, data=nedaData, var.equal=TRUE)
+t.test(Intense ~ Gender, data=MUdata, var.equal=TRUE)
+
+#Intense - Cohen's d for individual dataset gender
+cohen.d(Intense ~ Gender, data=nedaData, var.equal=TRUE)
+cohen.d(Intense ~ Gender, data=MUdata, var.equal=TRUE)
+
 ------
 
 # (4) Gender and Sophisticated 
@@ -212,6 +237,14 @@ sd(nedaData$Sophisticated, na.rm = TRUE)
 aggregate(value ~ Dataset * Gender, data=subset(allDatalong, variable=="Sophisticated"), FUN=mean, na.rm=T)
 aggregate(value ~ Gender, data=subset(allDatalong, variable=="Sophisticated"), FUN=mean, na.rm=T)
 
+# Sophisticated - t-tests for individual dataset gender 
+t.test(Sophisticated ~ Gender, data=nedaData, var.equal=TRUE)
+t.test(Sophisticated ~ Gender, data=MUdata, var.equal=TRUE)
+
+#Sophisticated - Cohen's d for individual dataset gender
+cohen.d(Sophisticated ~ Gender, data=nedaData, var.equal=TRUE)
+cohen.d(Sophisticated ~ Gender, data=MUdata, var.equal=TRUE)
+
 ------
 
 # (5) Gender and Contemporary 
@@ -234,6 +267,14 @@ sd(nedaData$Contemporary, na.rm = TRUE)
 
 aggregate(value ~ Dataset * Gender, data=subset(allDatalong, variable=="Contemporary"), FUN=mean, na.rm=T)
 aggregate(value ~ Gender, data=subset(allDatalong, variable=="Contemporary"), FUN=mean, na.rm=T)
+
+# Contemporary - t-tests for individual dataset gender 
+t.test(Contemporary ~ Gender, data=nedaData, var.equal=TRUE)
+t.test(Contemporary ~ Gender, data=MUdata, var.equal=TRUE)
+
+#Contemporary - Cohen's d for individual dataset gender
+cohen.d(Contemporary ~ Gender, data=nedaData, var.equal=TRUE)
+cohen.d(Contemporary ~ Gender, data=MUdata, var.equal=TRUE)
 
 ------
 
@@ -262,6 +303,14 @@ aggregate(value ~ Gender, data=subset(allDatalong, variable=="Arousal"), FUN=mea
 aggregate(value ~ Gender, data=subset(allDatalong, variable=="Arousal"), FUN=mean, na.rm=T)
 aggregate(value ~ Gender, data=subset(allDatalong, variable=="Arousal"), FUN=sd, na.rm=T)
 
+# Arousal - t-tests for individual dataset gender 
+t.test(Arousal ~ Gender, data=nedaData, var.equal=TRUE)
+t.test(Arousal ~ Gender, data=MUdata, var.equal=TRUE)
+
+#Arousal - Cohen's d for individual dataset gender
+cohen.d(Arousal ~ Gender, data=nedaData, var.equal=TRUE)
+cohen.d(Arousal ~ Gender, data=MUdata, var.equal=TRUE)
+
 ------
 
 # (7) Gender and Depth 
@@ -285,9 +334,17 @@ sd(nedaData$Depth, na.rm = TRUE)
 aggregate(value ~ Dataset * Gender, data=subset(allDatalong, variable=="Depth"), FUN=mean, na.rm=T)
 aggregate(value ~ Gender, data=subset(allDatalong, variable=="Depth"), FUN=mean, na.rm=T)
 
-#Depth Mean and SD
+# Depth Mean and SD
 aggregate(value ~ Gender, data=subset(allDatalong, variable=="Depth"), FUN=mean, na.rm=T)
 aggregate(value ~ Gender, data=subset(allDatalong, variable=="Depth"), FUN=sd, na.rm=T)
+
+# Depth - t-tests for individual dataset gender 
+t.test(Depth ~ Gender, data=nedaData, var.equal=TRUE)
+t.test(Depth ~ Gender, data=MUdata, var.equal=TRUE)
+
+# Depth - Cohen's d for individual dataset gender
+cohen.d(Depth ~ Gender, data=nedaData, var.equal=TRUE)
+cohen.d(Depth ~ Gender, data=MUdata, var.equal=TRUE)
 
 ------
 
@@ -316,6 +373,14 @@ aggregate(value ~ Gender, data=subset(allDatalong, variable=="Valence"), FUN=mea
 aggregate(value ~ Gender, data=subset(allDatalong, variable=="Valence"), FUN=mean, na.rm=T)
 aggregate(value ~ Gender, data=subset(allDatalong, variable=="Valence"), FUN=sd, na.rm=T)
 
+# Valence - t-tests for individual dataset gender 
+t.test(Valence ~ Gender, data=nedaData, var.equal=TRUE)
+t.test(Valence ~ Gender, data=MUdata, var.equal=TRUE)
+
+# Valence - Cohen's d for individual dataset gender
+cohen.d(Valence ~ Gender, data=nedaData, var.equal=TRUE)
+cohen.d(Valence ~ Gender, data=MUdata, var.equal=TRUE)
+
 ------
 
 # (9) Gender and MusicSum 
@@ -342,7 +407,13 @@ aggregate(value ~ Gender, data=subset(allDatalong, variable=="MusicSum"), FUN=me
 aggregate(value ~ Dataset * Gender, data=subset(allDatalong, variable=="MusicSum"), FUN=mean, na.rm=T)
 aggregate(value ~ Dataset * Gender, data=subset(allDatalong, variable=="MusicSum"), FUN=sd, na.rm=T)
 
+# MusicSum - t-tests for individual dataset gender 
+t.test(MusicSum ~ Gender, data=nedaData, var.equal=TRUE)
+t.test(MusicSum ~ Gender, data=MUdata, var.equal=TRUE)
 
+# MusicSum - Cohen's d for individual dataset gender
+cohen.d(MusicSum ~ Gender, data=nedaData, var.equal=TRUE)
+cohen.d(MusicSum ~ Gender, data=MUdata, var.equal=TRUE)
 
 ##### Age Correlations #####----------------------------------------------------
 
@@ -389,7 +460,8 @@ ggsave("correlation_AgexIntense_raw_new.png", width=5, height=5)
 # (3) AGE X UNPRETENTIOUS  
 (tmpMU <- with(MUdata, cor.test(x=Age, y=Unpretentious))) # do the correlation for musical universe
 (tmpMPC <- with(nedaData, cor.test(x=Age, y=Unpretentious))) # do the correlation for neda's data
-cocor.indep.groups(r1.jk=tmpMU$estimate, r2.hm=tmpMPC$estimate, n1=tmpMU$parameter+2, n2=tmpMPC$parameter+2, alternative="two.sided", alpha=0.05, conf.level=0.95, null.value=0)
+cocor.indep.groups(r1.jk=tmpMU$estimate, r2.hm=tmpMPC$estimate, n1=tmpMU$parameter+2, n2=tmpMPC$parameter+2, 
+                   alternative="two.sided", alpha=0.05, conf.level=0.95, null.value=0)
 
 #fisher1925: Fisher's z (1925)
   #z = 4.1421, p-value = 0.0000
@@ -535,6 +607,48 @@ ggplot() + # start a ggplot
 ggsave("correlation_AgexMusicSum_raw_new.png", width=5, height=5)
 
 
+#### Openness and MUSIC Model Correlations -------------------------------------
+
+# 1 - Openness (IV) and Mellow (DV)
+
+(tmpMPC <- with(nedaData, cor.test(x=Openness, y=Mellow))) # do the correlation for neda's data
+
+p_value <- tmpMPC$p.value #to round p-value to 5-decimal places
+formatted_p_value <- sprintf("%.5f", p_value)
+cat("The p-value is:", formatted_p_value, "\n")
+
+#-------------------------------------------------------------------------------
+
+# 2 - Openness (IV) and Unpretentious (DV)
+
+(tmpMPC <- with(nedaData, cor.test(x=Openness, y=Unpretentious))) # do the correlation for neda's data
+
+p_value <- tmpMPC$p.value #to round p-value to 5-decimal places
+formatted_p_value <- sprintf("%.5f", p_value)
+cat("The p-value is:", formatted_p_value, "\n")
+
+
+#-------------------------------------------------------------------------------
+
+# 3 - Openness (IV) and Intense (DV)
+
+(tmpMPC <- with(nedaData, cor.test(x=Openness, y=Intense))) # do the correlation for neda's data
+
+p_value <- tmpMPC$p.value #to round p-value to 5-decimal places
+formatted_p_value <- sprintf("%.5f", p_value)
+cat("The p-value is:", formatted_p_value, "\n")
+
+#-------------------------------------------------------------------------------
+
+# 4 - Openness (IV) and Contemporary (DV)
+
+(tmpMPC <- with(nedaData, cor.test(x=Openness, y=Contemporary))) # do the correlation for neda's data
+
+p_value <- tmpMPC$p.value #to round p-value to 5-decimal places
+formatted_p_value <- sprintf("%.5f", p_value)
+cat("The p-value is:", formatted_p_value, "\n")
+
+
 ##### All Key Correlations -----------------------------------------------------
 
 # 1 - Openness (IV) and Sophisticated (DV)
@@ -542,6 +656,10 @@ ggsave("correlation_AgexMusicSum_raw_new.png", width=5, height=5)
 (tmpMU <- with(MUdata, cor.test(x=Openness, y=Sophisticated))) # do the correlation for musical universe
 (tmpMPC <- with(nedaData, cor.test(x=Openness, y=Sophisticated))) # do the correlation for neda's data
 cocor.indep.groups(r1.jk=tmpMU$estimate, r2.hm=tmpMPC$estimate, n1=tmpMU$parameter+2, n2=tmpMPC$parameter+2, alternative="two.sided", alpha=0.05, conf.level=0.95, null.value=0)
+
+p_value <- tmpMPC$p.value #to round p-value to 5-decimal places
+formatted_p_value <- sprintf("%.5f", p_value)
+cat("The p-value is:", formatted_p_value, "\n")
 
 #fisher1925: Fisher's z (1925)
   #z = 3.2595, p-value = 0.0011
@@ -738,6 +856,10 @@ ggsave("correlation_NeuroticismxIntense_raw_new.png", width=5, height=5)
 (tmpMPC <- with(nedaData, cor.test(x=Openness, y=MusicSum))) # do the correlation for neda's data
 cocor.indep.groups(r1.jk=tmpMU$estimate, r2.hm=tmpMPC$estimate, n1=tmpMU$parameter+2, n2=tmpMPC$parameter+2, alternative="two.sided", alpha=0.05, conf.level=0.95, null.value=0)
 
+p_value <- tmpMPC$p.value #to round p-value to 5-decimal places
+formatted_p_value <- sprintf("%.5f", p_value)
+cat("The p-value is:", formatted_p_value, "\n")
+
 ggplot() + # start a ggplot
   #geom_point(data=MUdata, aes(x=Openness, y=MusicSum), col="grey", size=0.5) + # add the musical universe data
   geom_point(data=nedaData, aes(x=Openness, y=MusicSum), col="springgreen3") + # add the Neda data
@@ -809,6 +931,10 @@ ggsave("correlation_NeuroticismxMusicSum_raw_new.png", width=5, height=5)
 (tmpMU <- with(MUdata, cor.test(x=Openness, y=Arousal))) # do the correlation for musical universe
 (tmpMPC <- with(nedaData, cor.test(x=Openness, y=Arousal))) # do the correlation for neda's data
 cocor.indep.groups(r1.jk=tmpMU$estimate, r2.hm=tmpMPC$estimate, n1=tmpMU$parameter+2, n2=tmpMPC$parameter+2, alternative="two.sided", alpha=0.05, conf.level=0.95, null.value=0)
+
+p_value <- tmpMPC$p.value #to round p-value to 5-decimal places
+formatted_p_value <- sprintf("%.5f", p_value)
+cat("The p-value is:", formatted_p_value, "\n")
 
 # fisher1925: Fisher's z (1925)
 #  z = -0.9226, p-value = 0.3562
@@ -1019,6 +1145,10 @@ ggsave("correlation_NeuroticismsxValence_raw_new.png", width=5, height=5)
 (tmpMPC <- with(nedaData, cor.test(x=Openness, y=Valence))) # do the correlation for neda's data
 cocor.indep.groups(r1.jk=tmpMU$estimate, r2.hm=tmpMPC$estimate, n1=tmpMU$parameter+2, n2=tmpMPC$parameter+2, alternative="two.sided", alpha=0.05, conf.level=0.95, null.value=0)
 
+p_value <- tmpMPC$p.value #to round p-value to 5-decimal places
+formatted_p_value <- sprintf("%.5f", p_value)
+cat("The p-value is:", formatted_p_value, "\n")
+
 ggplot() + # start a ggplot
   #geom_point(data=MUdata, aes(x=Openness, y=Valence), col="grey", size=0.5) + # add the musical universe data
   geom_point(data=nedaData, aes(x=Openness, y=Valence), col="springgreen3") + # add the Neda data
@@ -1038,6 +1168,10 @@ ggsave("correlation_OpennessxValence_raw_new.png", width=5, height=5)
 (tmpMU <- with(MUdata, cor.test(x=Openness, y=Depth))) # do the correlation for musical universe
 (tmpMPC <- with(nedaData, cor.test(x=Openness, y=Depth))) # do the correlation for neda's data
 cocor.indep.groups(r1.jk=tmpMU$estimate, r2.hm=tmpMPC$estimate, n1=tmpMU$parameter+2, n2=tmpMPC$parameter+2, alternative="two.sided", alpha=0.05, conf.level=0.95, null.value=0)
+
+p_value <- tmpMPC$p.value #to round p-value to 5-decimal places
+formatted_p_value <- sprintf("%.5f", p_value)
+cat("The p-value is:", formatted_p_value, "\n")
 
 ggplot() + # start a ggplot
   #geom_point(data=MUdata, aes(x=Openness, y=Depth), col="grey", size=0.5) + # add the musical universe data
@@ -1444,7 +1578,7 @@ stargazer(lm.23a, lm.23b, type="html", out="/Users/nedarad/Desktop/NeuroticismXM
 #  theme_bw()
 # ggsave("boxplot_GenderxAllCreativity_raw.png", width=8.5, height=8.5)
 
-nedaDatalong_creativity <- melt(nedaData[,c(1,2,18:20,22,28,29)], id.vars=c("ProlificID","Gender"))
+nedaDatalong_creativity <- melt(nedaData[,c(1,2,18,19,28)], id.vars=c("ProlificID","Gender"))
 
 # code to have the means to show up
 ggplot(nedaDatalong_creativity, aes(y=value, x=Gender, col=Gender)) +
@@ -1453,7 +1587,7 @@ ggplot(nedaDatalong_creativity, aes(y=value, x=Gender, col=Gender)) +
   facet_wrap(~variable, scales="free") + 
   scale_color_manual(values = c("orchid1", "steelblue1")) +
   theme_bw()
-ggsave("boxplot_GenderxAllCreativity_raw2.png", width=8.5, height=8.5)
+ggsave("boxplot_GenderxAllCreativity_raw2.png", width=8.5, height=5.0)
 
 
 ------
@@ -1471,35 +1605,35 @@ aggregate(value ~ Gender, data=subset(nedaDatalong_creativity, variable=="CAQ"),
 ------
 
 # 2 - Number of Galleries and Gender
-with(nedaData, t.test(NumGalleries ~ Gender, data=nedaData, var.equal=T))
-with(nedaData, cohen.d(NumGalleries ~ Gender, data=nedaData, var.equal=T))
+with(nedaData, t.test(NumberofGalleries ~ Gender, data=nedaData, var.equal=T))
+with(nedaData, cohen.d(NumberofGalleries ~ Gender, data=nedaData, var.equal=T))
 
 aggregate(value ~ Dataset * Gender, data=subset(allDatalong, variable=="Intense"), FUN=mean, na.rm=T)
 aggregate(value ~ Gender, data=subset(allDatalong, variable=="Intense"), FUN=mean, na.rm=T)
 
 ------
 
-# 3 - Number of Clusters and Gender
-with(nedaData, t.test(NumClusters ~ Gender, data=nedaData, var.equal=T))
-with(nedaData, cohen.d(NumClusters ~ Gender, data=nedaData, var.equal=T))
+# Number of Clusters and Gender
+#with(nedaData, t.test(NumClusters ~ Gender, data=nedaData, var.equal=T))
+#with(nedaData, cohen.d(NumClusters ~ Gender, data=nedaData, var.equal=T))
 
 ------
 
-# 4 - Percent Time Explored and Gender
-with(nedaData, t.test(PercentTimeExplore ~ Gender, data=nedaData, var.equal=T))
-with(nedaData, cohen.d(PercentTimeExplore ~ Gender, data=nedaData, var.equal=T))
+# Percent Time Explored and Gender
+#with(nedaData, t.test(PercentTimeExplore ~ Gender, data=nedaData, var.equal=T))
+#with(nedaData, cohen.d(PercentTimeExplore ~ Gender, data=nedaData, var.equal=T))
 
 ------
 
-# 5 - Originality and Gender
+# 3 - Originality and Gender
 with(nedaData, t.test(Originality ~ Gender, data=nedaData, var.equal=T))
 with(nedaData, cohen.d(Originality ~ Gender, data=nedaData, var.equal=T))
 
 ------
 
-# 6 - Percent Clusters GC and Gender
-with(nedaData, t.test(PercentClustersGC ~ Gender, data=nedaData, var.equal=T))
-with(nedaData, cohen.d(PercentClustersGC ~ Gender, data=nedaData, var.equal=T))
+# Percent Clusters GC and Gender
+#with(nedaData, t.test(PercentClustersGC ~ Gender, data=nedaData, var.equal=T))
+#with(nedaData, cohen.d(PercentClustersGC ~ Gender, data=nedaData, var.equal=T))
 
 ------
 
@@ -1517,13 +1651,13 @@ aggregate(CAQ ~ Gender, data=nedaData, FUN=mean, na.rm=T)
 
 
 ##### Correlation Matrix -------------------------------------------------------
-allCors = cor(nedaData[,c(-1,-2,-21,-23,-24,-25,-26,-27)], use = "pairwise.complete.obs")
-cor_test_mat <- corr.test(nedaData[,c(-1,-2,-21,-23,-24,-25,-26,-27)])$p
+allCors = cor(nedaData[,c(-1,-2,-20,-21,-22,-23,-24,-25,-26,-27,-29)], use = "pairwise.complete.obs")
+cor_test_mat <- corr.test(nedaData[,c(-1,-2,-20,-21,-22,-23,-24,-25,-26,-27,-29)])$p
 #"complete.obs" removed and put "pairwise.complete.obs" instead
 
 # Create Correlation Matrix and customize the colours
 corrplot(allCors, method="ellipse", type="lower", diag=T, order="original",  
-         col=brewer.pal(n=8, name="RdBu"), p.mat = cor_test_mat,insig = "blank", 
+         col=brewer.pal(n=8, name="RdBu"), p.mat = cor_test_mat, insig = "blank", sig.level=0.005,
          tl.col=c("midnightblue", "midnightblue","midnightblue",
                                                                                             
                   "midnightblue","midnightblue","midnightblue","midnightblue","midnightblue","midnightblue","midnightblue","midnightblue","midnightblue",
@@ -1537,6 +1671,8 @@ write.csv(round(allCors,4), "nedaCorMatrix.csv", row.names=T)
 
 ##### Creativity Correlations MPC ----------------------------------------------
 
+# CAQ
+
 # 1 -  Openness and CAQ
 (tmpMPC <- with(nedaData, cor.test(x=Openness, y=CAQ))) # do the correlation for neda's data
 
@@ -1548,16 +1684,15 @@ ggplot(data=nedaData, aes(x=Openness, y=CAQ)) + # start a ggplot
   theme_bw() + # make it simple
   theme(axis.text=element_text(size=13),
         axis.title=element_text(size=13, face="bold"))
-ggsave("correlation_OpennessxCAQ.png_raw", width=5, height=5)
+ggsave("correlation_OpennessxCAQ.png", width=5, height=5)
 # As seen in Figure 5, CAQ and Openness were significantly correlated (r=0.37, df=282, p<0.001).
 # The correlation between CAQ and and Openness was significant (r=0.37, df=282, p<0.001).
 
 mean(nedaData$CAQ, na.rm = TRUE)
 sd(nedaData$CAQ, na.rm = TRUE)
 
-------
 
-# 2 -  Neuroticism and CAQ
+# 2 -  Neuroticism and CAQ 
 (tmpMPC <- with(nedaData, cor.test(x=Neuroticism, y=CAQ))) # do the correlation for neda's data
 
 ggplot(data=nedaData, aes(x=Neuroticism, y=CAQ)) + # start a ggplot
@@ -1570,7 +1705,6 @@ ggplot(data=nedaData, aes(x=Neuroticism, y=CAQ)) + # start a ggplot
         axis.title=element_text(size=13, face="bold"))
 ggsave("correlation_NeuroticismxCAQ_raw.png", width=5, height=5)
 
-------
 
 # 3 -  CAQ and Depth
 (tmpMPC <- with(nedaData, cor.test(x=CAQ, y=Depth))) # do the correlation for neda's data
@@ -1585,7 +1719,6 @@ ggplot(data=nedaData, aes(x=CAQ, y=Depth)) + # start a ggplot
         axis.title=element_text(size=13, face="bold"))
 ggsave("correlation_CAQxDepth_raw.png", width=5, height=5)
 
-------
 
 # 4 -  CAQ and Mellow
 (tmpMPC <- with(nedaData, cor.test(x=CAQ, y=Mellow))) # do the correlation for neda's data
@@ -1600,9 +1733,277 @@ ggplot(data=nedaData, aes(x=CAQ, y=Mellow)) + # start a ggplot
         axis.title=element_text(size=13, face="bold"))
 ggsave("correlation_CAQxMellow_raw.png", width=5, height=5)
 
+
+# 5 -  CAQ and Unpretentious
+(tmpMPC <- with(nedaData, cor.test(x=CAQ, y=Unpretentious))) # do the correlation for neda's data
+
+ggplot(data=nedaData, aes(x=CAQ, y=Unpretentious)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + # add the correlation line
+  annotate(geom="text", x=23, y=0.32, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13, face="bold"))
+ggsave("correlation_CAQxUnpretentious_raw.png", width=5, height=5)
+
+
+# 6 -  CAQ and Sophisticated
+(tmpMPC <- with(nedaData, cor.test(x=CAQ, y=Sophisticated))) # do the correlation for neda's data
+
+ggplot(data=nedaData, aes(x=CAQ, y=Sophisticated)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + # add the correlation line
+  annotate(geom="text", x=23, y=0.35, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13, face="bold"))
+ggsave("correlation_CAQxSophisticated_raw.png", width=5, height=5)
+
+
+# 7 -  CAQ and Intense
+(tmpMPC <- with(nedaData, cor.test(x=CAQ, y=Intense))) # do the correlation for neda's data
+
+ggplot(data=nedaData, aes(x=CAQ, y=Intense)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + # add the correlation line
+  annotate(geom="text", x=23, y=0.35, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13, face="bold"))
+ggsave("correlation_CAQxIntense_raw.png", width=5, height=5)
+
+
+# 8 -  CAQ and Contemporary
+(tmpMPC <- with(nedaData, cor.test(x=CAQ, y=Contemporary))) # do the correlation for neda's data
+
+ggplot(data=nedaData, aes(x=CAQ, y=Contemporary)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + # add the correlation line
+  annotate(geom="text", x=23, y=0.30, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13, face="bold"))
+ggsave("correlation_CAQxContemporary_raw.png", width=5, height=5)
+
+
+# 9 -  CAQ and Depth
+(tmpMPC <- with(nedaData, cor.test(x=CAQ, y=Depth))) # do the correlation for neda's data
+
+ggplot(data=nedaData, aes(x=CAQ, y=Depth)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + # add the correlation line
+  annotate(geom="text", x=23, y=-0.29, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13, face="bold"))
+ggsave("correlation_CAQxDepth_raw.png", width=5, height=5)
+
+
+# 10 -  CAQ and Valence
+(tmpMPC <- with(nedaData, cor.test(x=CAQ, y=Valence))) # do the correlation for neda's data
+
+ggplot(data=nedaData, aes(x=CAQ, y=Valence)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + # add the correlation line
+  annotate(geom="text", x=23, y=-0.05, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13, face="bold"))
+ggsave("correlation_CAQxValence_raw.png", width=5, height=5)
+
+
+# 11 -  CAQ and Arousal
+(tmpMPC <- with(nedaData, cor.test(x=CAQ, y=Arousal))) # do the correlation for neda's data
+
+ggplot(data=nedaData, aes(x=CAQ, y=Arousal)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + # add the correlation line
+  annotate(geom="text", x=23, y=0.30, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13, face="bold"))
+ggsave("correlation_CAQxArousal_raw.png", width=5, height=5)
+
+
+# 12 -  CAQ and MusicSum
+(tmpMPC <- with(nedaData, cor.test(x=CAQ, y=MusicSum))) # do the correlation for neda's data
+
+ggplot(data=nedaData, aes(x=CAQ, y=MusicSum)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + # add the correlation line
+  annotate(geom="text", x=22, y=190, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13, face="bold"))
+ggsave("correlation_CAQxMusicSum_raw.png", width=5, height=5)
+
+
+# 13 -  CAQ and Openness
+(tmpMPC <- with(nedaData, cor.test(x=CAQ, y=Openness))) # do the correlation for neda's data
+
+ggplot(data=nedaData, aes(x=CAQ, y=Openness)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + # add the correlation line
+  annotate(geom="text", x=21.5, y=8.5, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13, face="bold"))
+ggsave("correlation_CAQxOpenness_raw.png", width=5, height=5)
+
+
+# 14 -  CAQ and Conscientiousness
+(tmpMPC <- with(nedaData, cor.test(x=CAQ, y=Conscientiousness))) # do the correlation for neda's data
+
+ggplot(data=nedaData, aes(x=CAQ, y=Conscientiousness)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + # add the correlation line
+  annotate(geom="text", x=22, y=7.2, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13, face="bold"))
+ggsave("correlation_CAQxConscientiousness_raw.png", width=5, height=5)
+
+
+# 15 -  CAQ and Extraversion
+(tmpMPC <- with(nedaData, cor.test(x=CAQ, y=Extraversion))) # do the correlation for neda's data
+
+ggplot(data=nedaData, aes(x=CAQ, y=Extraversion)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + # add the correlation line
+  annotate(geom="text", x=22, y=7.2, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13, face="bold"))
+ggsave("correlation_CAQxExtraversion_raw.png", width=5, height=5)
+
+
+# 16 -  CAQ and Agreeableness
+(tmpMPC <- with(nedaData, cor.test(x=CAQ, y=Agreeableness))) # do the correlation for neda's data
+
+ggplot(data=nedaData, aes(x=CAQ, y=Agreeableness)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + # add the correlation line
+  annotate(geom="text", x=22, y=7.2, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13, face="bold"))
+ggsave("correlation_CAQxAgreeableness_raw.png", width=5, height=5)
+
+
+# 17 -  CAQ and Neuroticism
+(tmpMPC <- with(nedaData, cor.test(x=CAQ, y=Neuroticism))) # do the correlation for neda's data
+
+ggplot(data=nedaData, aes(x=CAQ, y=Neuroticism)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + # add the correlation line
+  annotate(geom="text", x=22, y=7.2, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13, face="bold"))
+ggsave("correlation_CAQxNeuroticism_raw.png", width=5, height=5)
+
+
+# 18 -  CAQ and Sophisticated 
+(tmpMPC <- with(nedaData, cor.test(x=CAQ, y=Sophisticated))) # do the correlation for neda's data
+
+ggplot(data=nedaData, aes(x=CAQ, y=Sophisticated)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + # add the correlation line
+  annotate(geom="text", x=23, y=0.35, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13, face="bold"))
+ggsave("correlation_CAQxSophisticated_raw.png", width=5, height=5)
+
+
+# 19 -  Extraversion and CAQ 
+(tmpMPC <- with(nedaData, cor.test(x=Extraversion, y=CAQ))) # do the correlation for neda's data
+
+ggplot(data=nedaData, aes(x=Extraversion, y=CAQ)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + # add the correlation line
+  annotate(geom="text", x=3, y=70, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13, face="bold"))
+ggsave("correlation_ExtraversionxCAQ_raw.png", width=5, height=5)
+
+
+# 20 -  Openness and CAQ 
+(tmpMPC <- with(nedaData, cor.test(x=Openness, y=CAQ))) # do the correlation for neda's data
+
+ggplot(data=nedaData, aes(x=Openness, y=CAQ)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + # add the correlation line
+  annotate(geom="text", x=3.3, y=70, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13, face="bold"))
+ggsave("correlation_OpennessxCAQ_raw.png", width=5, height=5)
+
+
+# 21 -  Conscientiousness and CAQ 
+(tmpMPC <- with(nedaData, cor.test(x=Conscientiousness, y=CAQ))) # do the correlation for neda's data
+
+ggplot(data=nedaData, aes(x=Conscientiousness, y=CAQ)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + # add the correlation line
+  annotate(geom="text", x=3.3, y=70, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13, face="bold"))
+ggsave("correlation_ConscientiousnessxCAQ_raw.png", width=5, height=5)
+
+
+# 22 -  Agreeableness and CAQ 
+(tmpMPC <- with(nedaData, cor.test(x=Agreeableness, y=CAQ))) # do the correlation for neda's data
+
+ggplot(data=nedaData, aes(x=Agreeableness, y=CAQ)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + # add the correlation line
+  annotate(geom="text", x=4, y=70, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13, face="bold"))
+ggsave("correlation_AgreeablenessxCAQ_raw.png", width=5, height=5)
+
+
+
+# 23 -  Neuroticism and CAQ 
+(tmpMPC <- with(nedaData, cor.test(x=Neuroticism, y=CAQ))) # do the correlation for neda's data
+
+ggplot(data=nedaData, aes(x=Neuroticism, y=CAQ)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + # add the correlation line
+  annotate(geom="text", x=3, y=70, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13, face="bold"))
+ggsave("correlation_NeuroticismxCAQ_raw.png", width=5, height=5)
+
+
 ------
 
-# 5 - Openness and MusicSum
+# Openness and MusicSum
 (tmpMPC <- with(nedaData, cor.test(x=Openness, y=MusicSum))) # do the correlation for neda's data
 
 with(nedaData, cor.test(x=Openness, y=MusicSum)) # do the correlation
@@ -1618,7 +2019,7 @@ ggsave("correlation_OpennessxMusicSum_raw.png", width=5, height=5)
 
 ------
 
-# 6 - Openness and Arousal
+# Openness and Arousal
 (tmpMPC <- with(nedaData, cor.test(x=Openness, y=Arousal))) # do the correlation for neda's data
 
 with(nedaData, cor.test(x=Openness, y=Arousal)) # do the correlation
@@ -1634,7 +2035,9 @@ ggsave("correlation_OpennessxArousal_raw.png", width=5, height=5)
 
 ------
 
-# 7 - NumberofGalleries and Contemporary
+# NumberofGalleries
+  
+# 1 - NumberofGalleries and Contemporary
 (tmpMPC <- with(nedaData, cor.test(x=NumberofGalleries, y=Contemporary))) # do the correlation for neda's data
 
 with(nedaData, cor.test(x=NumberofGalleries, y=Contemporary)) # do the correlation
@@ -1651,24 +2054,322 @@ ggsave("correlation_NumberofGalleriesxContemporary_raw.png", width=5, height=5)
 mean(nedaData$NumGalleries, na.rm = TRUE)
 sd(nedaData$NumGalleries, na.rm = TRUE)
 
-------
 
-# 8 - NumberofClusters and Contemporary
-(tmpMPC <- with(nedaData, cor.test(x=NumberofClusters, y=Contemporary))) # do the correlation for neda's data
+# 2 - NumberofGalleries and Mellow
+(tmpMPC <- with(nedaData, cor.test(x=NumberofGalleries, y=Mellow))) # do the correlation for neda's data
 
-with(nedaData, cor.test(x=NumberofClusters, y=Contemporary)) # do the correlation
-ggplot(data=nedaData, aes(x=NumberofClusters, y=Contemporary)) + # start a ggplot
+with(nedaData, cor.test(x=NumberofGalleries, y=Mellow)) # do the correlation
+ggplot(data=nedaData, aes(x=NumberofGalleries, y=Mellow)) + # start a ggplot
   geom_point(col="steelblue1") + # add the Neda data
   stat_smooth(method=lm, col="steelblue1") + #add the correlation line
-  annotate(geom="text", x=14.5, y=0.30, size=4.5, label=
+  annotate(geom="text", x=81, y=0.32, size=4.5, label=
              paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
   theme_bw() + # make it simple
   theme(axis.text=element_text(size=15),
         axis.title=element_text(size=15,face="bold"))
-ggsave("correlation_NumberofClustersxContemporary_raw.png", width=5, height=5)
+ggsave("correlation_NumberofGalleriesxMellow_raw.png", width=5, height=5)
 
-mean(nedaData$NumClusters, na.rm = TRUE)
-sd(nedaData$NumClusters, na.rm = TRUE)
+mean(nedaData$NumGalleries, na.rm = TRUE)
+sd(nedaData$NumGalleries, na.rm = TRUE)
+
+
+# 3 - NumberofGalleries and Unpretentious
+(tmpMPC <- with(nedaData, cor.test(x=NumberofGalleries, y=Unpretentious))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=NumberofGalleries, y=Unpretentious)) # do the correlation
+ggplot(data=nedaData, aes(x=NumberofGalleries, y=Unpretentious)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=81, y=0.31, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=15),
+        axis.title=element_text(size=15,face="bold"))
+ggsave("correlation_NumberofGalleriesxUnpretentious_raw.png", width=5, height=5)
+
+mean(nedaData$NumGalleries, na.rm = TRUE)
+sd(nedaData$NumGalleries, na.rm = TRUE)
+
+
+# 4 - NumberofGalleries and Sophisticated
+(tmpMPC <- with(nedaData, cor.test(x=NumberofGalleries, y=Sophisticated))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=NumberofGalleries, y=Sophisticated)) # do the correlation
+ggplot(data=nedaData, aes(x=NumberofGalleries, y=Sophisticated)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=81, y=0.35, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=15),
+        axis.title=element_text(size=15,face="bold"))
+ggsave("correlation_NumberofGalleriesxSophisticated_raw.png", width=5, height=5)
+
+mean(nedaData$NumGalleries, na.rm = TRUE)
+sd(nedaData$NumGalleries, na.rm = TRUE)
+
+
+# 5 - NumberofGalleries and Intense
+(tmpMPC <- with(nedaData, cor.test(x=NumberofGalleries, y=Intense))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=NumberofGalleries, y=Intense)) # do the correlation
+ggplot(data=nedaData, aes(x=NumberofGalleries, y=Intense)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=83, y=0.33, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=15),
+        axis.title=element_text(size=15,face="bold"))
+ggsave("correlation_NumberofGalleriesxIntense_raw.png", width=5, height=5)
+
+mean(nedaData$NumGalleries, na.rm = TRUE)
+sd(nedaData$NumGalleries, na.rm = TRUE)
+
+
+# 6 - NumberofGalleries and Depth
+(tmpMPC <- with(nedaData, cor.test(x=NumberofGalleries, y=Depth))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=NumberofGalleries, y=Depth)) # do the correlation
+ggplot(data=nedaData, aes(x=NumberofGalleries, y=Depth)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=82, y=-0.28, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=15),
+        axis.title=element_text(size=15,face="bold"))
+ggsave("correlation_NumberofGalleriesxDepth_raw.png", width=5, height=5)
+
+mean(nedaData$NumGalleries, na.rm = TRUE)
+sd(nedaData$NumGalleries, na.rm = TRUE)
+
+
+# 7 - NumberofGalleries and Valence
+(tmpMPC <- with(nedaData, cor.test(x=NumberofGalleries, y=Valence))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=NumberofGalleries, y=Valence)) # do the correlation
+ggplot(data=nedaData, aes(x=NumberofGalleries, y=Valence)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=82, y=-0.06, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=15),
+        axis.title=element_text(size=15,face="bold"))
+ggsave("correlation_NumberofGalleriesxValence_raw.png", width=5, height=5)
+
+mean(nedaData$NumGalleries, na.rm = TRUE)
+sd(nedaData$NumGalleries, na.rm = TRUE)
+
+
+# 8 - NumberofGalleries and Arousal
+(tmpMPC <- with(nedaData, cor.test(x=NumberofGalleries, y=Arousal))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=NumberofGalleries, y=Arousal)) # do the correlation
+ggplot(data=nedaData, aes(x=NumberofGalleries, y=Arousal)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=82, y=0.26, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=15),
+        axis.title=element_text(size=15,face="bold"))
+ggsave("correlation_NumberofGalleriesxArousal_raw.png", width=5, height=5)
+
+mean(nedaData$NumGalleries, na.rm = TRUE)
+sd(nedaData$NumGalleries, na.rm = TRUE)
+
+
+# 9 - NumberofGalleries and MusicSum
+(tmpMPC <- with(nedaData, cor.test(x=NumberofGalleries, y=MusicSum))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=NumberofGalleries, y=MusicSum)) # do the correlation
+ggplot(data=nedaData, aes(x=NumberofGalleries, y=MusicSum)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=82, y=189, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=15),
+        axis.title=element_text(size=15,face="bold"))
+ggsave("correlation_NumberofGalleriesxMusicSum_raw.png", width=5, height=5)
+
+mean(nedaData$NumGalleries, na.rm = TRUE)
+sd(nedaData$NumGalleries, na.rm = TRUE)
+
+
+# 10 - NumberofGalleries and Conscientiousness
+(tmpMPC <- with(nedaData, cor.test(x=NumberofGalleries, y=Conscientiousness))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=NumberofGalleries, y=Conscientiousness)) # do the correlation
+ggplot(data=nedaData, aes(x=NumberofGalleries, y=Conscientiousness)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=81, y=7.5, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=15),
+        axis.title=element_text(size=15,face="bold"))
+ggsave("correlation_NumberofGalleriesxConscientiousness_raw.png", width=5, height=5)
+
+mean(nedaData$NumGalleries, na.rm = TRUE)
+sd(nedaData$NumGalleries, na.rm = TRUE)
+
+
+# 11 - NumberofGalleries and Extraversion
+(tmpMPC <- with(nedaData, cor.test(x=NumberofGalleries, y=Extraversion))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=NumberofGalleries, y=Extraversion)) # do the correlation
+ggplot(data=nedaData, aes(x=NumberofGalleries, y=Extraversion)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=78, y=7.4, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=15),
+        axis.title=element_text(size=15,face="bold"))
+ggsave("correlation_NumberofGalleriesxExtraversion_raw.png", width=5, height=5)
+
+
+# 12 - NumberofGalleries and Agreeableness
+(tmpMPC <- with(nedaData, cor.test(x=NumberofGalleries, y=Agreeableness))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=NumberofGalleries, y=Agreeableness)) # do the correlation
+ggplot(data=nedaData, aes(x=NumberofGalleries, y=Agreeableness)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=79, y=7.4, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=15),
+        axis.title=element_text(size=15,face="bold"))
+ggsave("correlation_NumberofGalleriesxAgreeableness_raw.png", width=5, height=5)
+
+
+# 13 - NumberofGalleries and Neuroticism
+(tmpMPC <- with(nedaData, cor.test(x=NumberofGalleries, y=Neuroticism))) # do the correlation for nedaData
+
+with(nedaData, cor.test(x=NumberofGalleries, y=Neuroticism)) # do the correlation
+ggplot(data=nedaData, aes(x=NumberofGalleries, y=Neuroticism)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=79, y=7.4, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=15),
+        axis.title=element_text(size=15,face="bold"))
+ggsave("correlation_NumberofGalleriesxNeuroticism_raw.png", width=5, height=5)
+
+
+# 14 - Neuroticism and NumberofGalleries
+(tmpMPC <- with(nedaData, cor.test(x=Neuroticism, y=NumberofGalleries))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=Neuroticism, y=NumberofGalleries)) # do the correlation
+ggplot(data=nedaData, aes(x=Neuroticism, y=NumberofGalleries)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=3, y=201, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=15),
+        axis.title=element_text(size=15,face="bold"))
+ggsave("correlation_NeuroticismxNumberofGalleries_raw.png", width=5, height=5)
+
+
+# 15 - Openness and NumberofGalleries
+(tmpMPC <- with(nedaData, cor.test(x=Openness, y=NumberofGalleries))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=Openness, y=NumberofGalleries)) # do the correlation
+ggplot(data=nedaData, aes(x=Openness, y=NumberofGalleries)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=3.5, y=201, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=15),
+        axis.title=element_text(size=15,face="bold"))
+ggsave("correlation_OpennessxNumberofGalleries_raw.png", width=5, height=5)
+
+
+# 16 - Conscientiousness and NumberofGalleries
+(tmpMPC <- with(nedaData, cor.test(x=Conscientiousness, y=NumberofGalleries))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=Conscientiousness, y=NumberofGalleries)) # do the correlation
+ggplot(data=nedaData, aes(x=Conscientiousness, y=NumberofGalleries)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=3.5, y=201, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=15),
+        axis.title=element_text(size=15,face="bold"))
+ggsave("correlation_ConscientiousnessxNumberofGalleries_raw.png", width=5, height=5)
+
+
+# 17 - Extraversion and NumberofGalleries
+(tmpMPC <- with(nedaData, cor.test(x=Extraversion, y=NumberofGalleries))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=Extraversion, y=NumberofGalleries)) # do the correlation
+ggplot(data=nedaData, aes(x=Extraversion, y=NumberofGalleries)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=3, y=201, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=15),
+        axis.title=element_text(size=15,face="bold"))
+ggsave("correlation_ExtraversionxNumberofGalleries_raw.png", width=5, height=5)
+
+
+# 18 - Agreeableness and NumberofGalleries
+(tmpMPC <- with(nedaData, cor.test(x=Agreeableness, y=NumberofGalleries))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=Agreeableness, y=NumberofGalleries)) # do the correlation
+ggplot(data=nedaData, aes(x=Agreeableness, y=NumberofGalleries)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=4.1, y=201, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=15),
+        axis.title=element_text(size=15,face="bold"))
+ggsave("correlation_AgreeablenessxNumberofGalleries_raw.png", width=5, height=5)
+
+
+# 19 - Extraversion and NumberofGalleries
+(tmpMPC <- with(nedaData, cor.test(x=Extraversion, y=NumberofGalleries))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=Extraversion, y=NumberofGalleries)) # do the correlation
+ggplot(data=nedaData, aes(x=Extraversion, y=NumberofGalleries)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=3, y=201, size=4.5, label=
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=15),
+        axis.title=element_text(size=15,face="bold"))
+ggsave("correlation_ExtraversionxNumberofGalleries_raw.png", width=5, height=5)
+
+
+------
+
+# 8 - NumberofClusters and Contemporary
+#(tmpMPC <- with(nedaData, cor.test(x=NumberofClusters, y=Contemporary))) # do the correlation for neda's data
+
+#with(nedaData, cor.test(x=NumberofClusters, y=Contemporary)) # do the correlation
+#ggplot(data=nedaData, aes(x=NumberofClusters, y=Contemporary)) + # start a ggplot
+#  geom_point(col="steelblue1") + # add the Neda data
+#  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+#  annotate(geom="text", x=14.5, y=0.30, size=4.5, label=
+#             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+#  theme_bw() + # make it simple
+#  theme(axis.text=element_text(size=15),
+#       axis.title=element_text(size=15,face="bold"))
+#ggsave("correlation_NumberofClustersxContemporary_raw.png", width=5, height=5)
+
+#mean(nedaData$NumClusters, na.rm = TRUE)
+#sd(nedaData$NumClusters, na.rm = TRUE)
 
 ------
 
@@ -1705,69 +2406,69 @@ sd(nedaData$NumClusters, na.rm = TRUE)
 ------
 
 # 9 - PercentofTimeExplored and Age
-(tmpMPC <- with(nedaData, cor.test(x=Age, y=PercentofTimeExplored))) # do the correlation for neda's data
+#(tmpMPC <- with(nedaData, cor.test(x=Age, y=PercentofTimeExplored))) # do the correlation for neda's data
 
-with(nedaData, cor.test(x=Age, y=PercentofTimeExplored)) # do the correlation
-ggplot(data=nedaData, aes(x=Age, y=PercentofTimeExplored)) + # start a ggplot
-  geom_point(col="steelblue1") + # add the Neda data
-  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
-  annotate(geom="text", x=39, y=0.55, size=4.5, label= 
-             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
-  theme_bw() + # make it simple
-  theme(axis.text=element_text(size=15),
-        axis.title=element_text(size=15,face="bold"))
-ggsave("correlation_AgexPercentofTimeExplored_raw.png", width=5, height=5)
+#with(nedaData, cor.test(x=Age, y=PercentofTimeExplored)) # do the correlation
+#ggplot(data=nedaData, aes(x=Age, y=PercentofTimeExplored)) + # start a ggplot
+#  geom_point(col="steelblue1") + # add the Neda data
+#  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+#  annotate(geom="text", x=39, y=0.55, size=4.5, label= 
+#             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+#  theme_bw() + # make it simple
+#  theme(axis.text=element_text(size=15),
+#        axis.title=element_text(size=15,face="bold"))
+#ggsave("correlation_AgexPercentofTimeExplored_raw.png", width=5, height=5)
 
-mean(nedaData$PercentTimeExplore, na.rm = TRUE)
-sd(nedaData$PercentTimeExplore, na.rm = TRUE)
+#mean(nedaData$PercentTimeExplore, na.rm = TRUE)
+#sd(nedaData$PercentTimeExplore, na.rm = TRUE)
 
 ------
 
 # 10 - PercentofTimeExplored and Unpretentious
-(tmpMPC <- with(nedaData, cor.test(x=PercentofTimeExplored, y=Unpretentious))) # do the correlation for neda's data
+#(tmpMPC <- with(nedaData, cor.test(x=PercentofTimeExplored, y=Unpretentious))) # do the correlation for neda's data
 
-with(nedaData, cor.test(x=PercentofTimeExplored, y=Unpretentious)) # do the correlation
-ggplot(data=nedaData, aes(x=PercentofTimeExplored, y=Unpretentious)) + # start a ggplot
-  geom_point(col="steelblue1") + # add the Neda data
-  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
-  annotate(geom="text", x=0.21, y=0.30, size=4.5, label= 
-             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
-  theme_bw() + # make it simple
-  theme(axis.text=element_text(size=15),
-        axis.title=element_text(size=15,face="bold"))
-ggsave("correlation_PercentofTimeExploredxUnpretentious_raw.png", width=5, height=5)
+#with(nedaData, cor.test(x=PercentofTimeExplored, y=Unpretentious)) # do the correlation
+#ggplot(data=nedaData, aes(x=PercentofTimeExplored, y=Unpretentious)) + # start a ggplot
+#  geom_point(col="steelblue1") + # add the Neda data
+#  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+#  annotate(geom="text", x=0.21, y=0.30, size=4.5, label= 
+#             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+#  theme_bw() + # make it simple
+#  theme(axis.text=element_text(size=15),
+#        axis.title=element_text(size=15,face="bold"))
+#ggsave("correlation_PercentofTimeExploredxUnpretentious_raw.png", width=5, height=5)
 
 ------
 
 # 11 - PercentofTimeExplored and Sophisticated
-(tmpMPC <- with(nedaData, cor.test(x=PercentofTimeExplored, y=Sophisticated))) # do the correlation for neda's data
+#(tmpMPC <- with(nedaData, cor.test(x=PercentofTimeExplored, y=Sophisticated))) # do the correlation for neda's data
 
-with(nedaData, cor.test(x=PercentofTimeExplored, y=Sophisticated)) # do the correlation
-ggplot(data=nedaData, aes(x=PercentofTimeExplored, y=Sophisticated)) + # start a ggplot
-  geom_point(col="steelblue1") + # add the Neda data
-  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
-  annotate(geom="text", x=0.21, y=0.35, size=4.5, label= 
-             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
-  theme_bw() + # make it simple
-  theme(axis.text=element_text(size=15),
-        axis.title=element_text(size=15,face="bold"))
-ggsave("correlation_PercentofTimeExploredxSophisticated_raw.png", width=5, height=5)
+#with(nedaData, cor.test(x=PercentofTimeExplored, y=Sophisticated)) # do the correlation
+#ggplot(data=nedaData, aes(x=PercentofTimeExplored, y=Sophisticated)) + # start a ggplot
+#  geom_point(col="steelblue1") + # add the Neda data
+#  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+#  annotate(geom="text", x=0.21, y=0.35, size=4.5, label= 
+#             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+#  theme_bw() + # make it simple
+#  theme(axis.text=element_text(size=15),
+#        axis.title=element_text(size=15,face="bold"))
+#ggsave("correlation_PercentofTimeExploredxSophisticated_raw.png", width=5, height=5)
 
 ------
 
 # 14 - PercentofTimeExplored and Arousal
-(tmpMPC <- with(nedaData, cor.test(x=PercentofTimeExplored, y=Arousal))) # do the correlation for neda's data
+#(tmpMPC <- with(nedaData, cor.test(x=PercentofTimeExplored, y=Arousal))) # do the correlation for neda's data
 
-with(nedaData, cor.test(x=PercentofTimeExplored, y=Arousal)) # do the correlation
-ggplot(data=nedaData, aes(x=PercentofTimeExplored, y=Arousal)) + # start a ggplot
-  geom_point(col="steelblue1") + # add the Neda data
-  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
-  annotate(geom="text", x=0.21, y=0.26, size=4.5, label= 
-             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
-  theme_bw() + # make it simple
-  theme(axis.text=element_text(size=15),
-        axis.title=element_text(size=15,face="bold"))
-ggsave("correlation_PercentofTimeExploredxArousal_raw.png", width=5, height=5)
+#with(nedaData, cor.test(x=PercentofTimeExplored, y=Arousal)) # do the correlation
+#ggplot(data=nedaData, aes(x=PercentofTimeExplored, y=Arousal)) + # start a ggplot
+#  geom_point(col="steelblue1") + # add the Neda data
+#  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+#  annotate(geom="text", x=0.21, y=0.26, size=4.5, label= 
+#             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+#  theme_bw() + # make it simple
+#  theme(axis.text=element_text(size=15),
+#        axis.title=element_text(size=15,face="bold"))
+#ggsave("correlation_PercentofTimeExploredxArousal_raw.png", width=5, height=5)
 
 ------
 
@@ -1844,10 +2545,10 @@ ggsave("correlation_PercentofTimeExploredxArousal_raw.png", width=5, height=5)
 #  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
 #  annotate(geom="text", x=39, y=16.5, size=4.5, label= 
 #             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
-  theme_bw() + # make it simple
-  theme(axis.text=element_text(size=13),
-        axis.title=element_text(size=13,face="bold"))
-ggsave("correlation_AgexMedianNumStepsExploit_raw.png", width=5, height=5)
+#  theme_bw() + # make it simple
+#  theme(axis.text=element_text(size=13),
+#        axis.title=element_text(size=13,face="bold"))
+#ggsave("correlation_AgexMedianNumStepsExploit_raw.png", width=5, height=5)
 
 ------
 
@@ -1899,7 +2600,9 @@ ggsave("correlation_AgexMedianNumStepsExploit_raw.png", width=5, height=5)
 
 ------
 
-# 15 - Originality and Contemporary
+# Originality  
+  
+# 1 - Originality and Contemporary
 (tmpMPC <- with(nedaData, cor.test(x=Originality, y=Contemporary))) # do the correlation for neda's data
 
 with(nedaData, cor.test(x=Originality, y=Contemporary)) # do the correlation
@@ -1916,24 +2619,334 @@ ggsave("correlation_OriginalityxContemporary_raw.png", width=5, height=5)
 mean(nedaData$Originality, na.rm = TRUE)
 sd(nedaData$Originality, na.rm = TRUE)
 
-------
 
-# 16 - PercentofClustersGC and MusicSum
-(tmpMPC <- with(nedaData, cor.test(x=PercentofClustersGC, y=MusicSum))) # do the correlation for neda's data
+# 2 - Originality and Mellow
+(tmpMPC <- with(nedaData, cor.test(x=Originality, y=Mellow))) # do the correlation for neda's data
 
-with(nedaData, cor.test(x=PercentofClustersGC, y=MusicSum)) # do the correlation
-ggplot(data=nedaData, aes(x=PercentofClustersGC, y=MusicSum)) + # start a ggplot
+with(nedaData, cor.test(x=Originality, y=Mellow)) # do the correlation
+ggplot(data=nedaData, aes(x=Originality, y=Mellow)) + # start a ggplot
   geom_point(col="steelblue1") + # add the Neda data
   stat_smooth(method=lm, col="steelblue1") + #add the correlation line
-  annotate(geom="text", x=6.5, y=186, size=4.5, label= 
+  annotate(geom="text", x=2.91, y=0.31, size=4.5, label= 
              paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
   theme_bw() + # make it simple
   theme(axis.text=element_text(size=13),
         axis.title=element_text(size=13,face="bold"))
-ggsave("correlation_PercentofClustersGCxMusicSum_raw.png", width=5, height=5)
+ggsave("correlation_OriginalityxMellow_raw.png", width=5, height=5)
 
-mean(nedaData$PercentClustersGC, na.rm = TRUE)
-sd(nedaData$PercentClustersGC, na.rm = TRUE)
+mean(nedaData$Originality, na.rm = TRUE)
+sd(nedaData$Originality, na.rm = TRUE)
+
+
+# 3 - Originality and Unpretentious
+(tmpMPC <- with(nedaData, cor.test(x=Originality, y=Unpretentious))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=Originality, y=Unpretentious)) # do the correlation
+ggplot(data=nedaData, aes(x=Originality, y=Unpretentious)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=2.94, y=0.31, size=4.5, label= 
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13,face="bold"))
+ggsave("correlation_OriginalityxUnpretentious_raw.png", width=5, height=5)
+
+mean(nedaData$Originality, na.rm = TRUE)
+sd(nedaData$Originality, na.rm = TRUE)
+
+
+# 4 - Originality and Intense
+(tmpMPC <- with(nedaData, cor.test(x=Originality, y=Intense))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=Originality, y=Intense)) # do the correlation
+ggplot(data=nedaData, aes(x=Originality, y=Intense)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=2.93, y=0.33, size=4.5, label= 
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13,face="bold"))
+ggsave("correlation_OriginalityxIntense_raw.png", width=5, height=5)
+
+mean(nedaData$Originality, na.rm = TRUE)
+sd(nedaData$Originality, na.rm = TRUE)
+
+
+# 5 - Originality and Sophisticated
+(tmpMPC <- with(nedaData, cor.test(x=Originality, y=Sophisticated))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=Originality, y=Sophisticated)) # do the correlation
+ggplot(data=nedaData, aes(x=Originality, y=Sophisticated)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=2.92, y=0.35, size=4.5, label= 
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13,face="bold"))
+ggsave("correlation_OriginalityxSophisticated_raw.png", width=5, height=5)
+
+mean(nedaData$Originality, na.rm = TRUE)
+sd(nedaData$Originality, na.rm = TRUE)
+
+
+# 6 - Originality and Depth
+(tmpMPC <- with(nedaData, cor.test(x=Originality, y=Depth))) # do the correlation for nedadata
+
+with(nedaData, cor.test(x=Originality, y=Depth)) # do the correlation
+ggplot(data=nedaData, aes(x=Originality, y=Depth)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=2.92, y=-0.28, size=4.5, label= 
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13,face="bold"))
+ggsave("correlation_OriginalityxDepth_raw.png", width=5, height=5)
+
+mean(nedaData$Originality, na.rm = TRUE)
+sd(nedaData$Originality, na.rm = TRUE)
+
+
+# 7 - Originality and Arousal
+(tmpMPC <- with(nedaData, cor.test(x=Originality, y=Arousal))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=Originality, y=Arousal)) # do the correlation
+ggplot(data=nedaData, aes(x=Originality, y=Arousal)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=2.92, y=0.26, size=4.5, label= 
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13,face="bold"))
+ggsave("correlation_OriginalityxArousal_raw.png", width=5, height=5)
+
+mean(nedaData$Originality, na.rm = TRUE)
+sd(nedaData$Originality, na.rm = TRUE)
+
+
+# 8 - Originality and Valence
+(tmpMPC <- with(nedaData, cor.test(x=Originality, y=Valence))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=Originality, y=Valence)) # do the correlation
+ggplot(data=nedaData, aes(x=Originality, y=Valence)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=2.93, y=-0.06, size=4.5, label= 
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13,face="bold"))
+ggsave("correlation_OriginalityxValence_raw.png", width=5, height=5)
+
+mean(nedaData$Originality, na.rm = TRUE)
+sd(nedaData$Originality, na.rm = TRUE)
+
+
+# 9 - Originality and MusicSum
+(tmpMPC <- with(nedaData, cor.test(x=Originality, y=MusicSum))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=Originality, y=MusicSum)) # do the correlation
+ggplot(data=nedaData, aes(x=Originality, y=MusicSum)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=2.93, y=190, size=4.5, label= 
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13,face="bold"))
+ggsave("correlation_OriginalityxMusicSum_raw.png", width=5, height=5)
+
+
+# 10 - Originality and Openness
+(tmpMPC <- with(nedaData, cor.test(x=Originality, y=Openness))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=Originality, y=Openness)) # do the correlation
+ggplot(data=nedaData, aes(x=Originality, y=Openness)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=2.90, y=7.5, size=4.5, label= 
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13,face="bold"))
+ggsave("correlation_OriginalityxOpenness_raw.png", width=5, height=5)
+
+
+# 11 - Originality and Conscientiousness
+(tmpMPC <- with(nedaData, cor.test(x=Originality, y=Conscientiousness))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=Originality, y=Conscientiousness)) # do the correlation
+ggplot(data=nedaData, aes(x=Originality, y=Conscientiousness)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=2.90, y=7.5, size=4.5, label= 
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13,face="bold"))
+ggsave("correlation_OriginalityxConscientiousness_raw.png", width=5, height=5)
+
+
+# 12 - Originality and Extraversion
+(tmpMPC <- with(nedaData, cor.test(x=Originality, y=Extraversion))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=Originality, y=Extraversion)) # do the correlation
+ggplot(data=nedaData, aes(x=Originality, y=Extraversion)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=2.91, y=7.5, size=4.5, label= 
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13,face="bold"))
+ggsave("correlation_OriginalityxExtraversion_raw.png", width=5, height=5)
+
+
+# 13 - Originality and Agreeableness
+(tmpMPC <- with(nedaData, cor.test(x=Originality, y=Agreeableness))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=Originality, y=Agreeableness)) # do the correlation
+ggplot(data=nedaData, aes(x=Originality, y=Agreeableness)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=2.90, y=7.5, size=4.5, label= 
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13,face="bold"))
+ggsave("correlation_OriginalityxAgreeableness_raw.png", width=5, height=5)
+
+
+
+# 14 - Originality and Neuroticism
+(tmpMPC <- with(nedaData, cor.test(x=Originality, y=Neuroticism))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=Originality, y=Neuroticism)) # do the correlation
+ggplot(data=nedaData, aes(x=Originality, y=Neuroticism)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=2.91, y=7.5, size=4.5, label= 
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13,face="bold"))
+ggsave("correlation_OriginalityxNeuroticism_raw.png", width=5, height=5)
+
+
+
+# 15 - Neuroticism and Originality
+(tmpMPC <- with(nedaData, cor.test(x=Neuroticism, y=Originality))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=Neuroticism, y=Originality)) # do the correlation
+ggplot(data=nedaData, aes(x=Neuroticism, y=Originality)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=3.06, y=4, size=4.5, label= 
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13,face="bold"))
+ggsave("correlation_NeuroticismxOriginality_raw.png", width=5, height=5)
+
+
+
+# 16 - Openness and Originality
+(tmpMPC <- with(nedaData, cor.test(x=Openness, y=Originality))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=Openness, y=Originality)) # do the correlation
+ggplot(data=nedaData, aes(x=Openness, y=Originality)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=3.3, y=4, size=4.5, label= 
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13,face="bold"))
+ggsave("correlation_OpennessxOriginality_raw.png", width=5, height=5)
+
+
+# 17 - Conscientiousness and Originality
+(tmpMPC <- with(nedaData, cor.test(x=Conscientiousness, y=Originality))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=Conscientiousness, y=Originality)) # do the correlation
+ggplot(data=nedaData, aes(x=Conscientiousness, y=Originality)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=3.3, y=4, size=4.5, label= 
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13,face="bold"))
+ggsave("correlation_ConscientiousnessxOriginality_raw.png", width=5, height=5)
+
+
+# 18 - Agreeableness and Originality
+(tmpMPC <- with(nedaData, cor.test(x=Agreeableness, y=Originality))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=Agreeableness, y=Originality)) # do the correlation
+ggplot(data=nedaData, aes(x=Agreeableness, y=Originality)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=4, y=4, size=4.5, label= 
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13,face="bold"))
+ggsave("correlation_AgreeablenessxOriginality_raw.png", width=5, height=5)
+
+
+# 19 - Neuroticism and Originality
+(tmpMPC <- with(nedaData, cor.test(x=Neuroticism, y=Originality))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=Neuroticism, y=Originality)) # do the correlation
+ggplot(data=nedaData, aes(x=Neuroticism, y=Originality)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=3.1, y=4, size=4.5, label= 
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13,face="bold"))
+ggsave("correlation_NeuroticismxOriginality_raw.png", width=5, height=5)
+
+
+# 19 - Sophisticated and Originality
+(tmpMPC <- with(nedaData, cor.test(x=Sophisticated, y=Originality))) # do the correlation for neda's data
+
+with(nedaData, cor.test(x=Sophisticated, y=Originality)) # do the correlation
+ggplot(data=nedaData, aes(x=Sophisticated, y=Originality)) + # start a ggplot
+  geom_point(col="steelblue1") + # add the Neda data
+  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+  annotate(geom="text", x=0.23, y=4, size=4.5, label= 
+             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+  theme_bw() + # make it simple
+  theme(axis.text=element_text(size=13),
+        axis.title=element_text(size=13,face="bold"))
+ggsave("correlation_SophisticatedxOriginality_raw.png", width=5, height=5)
+
+
+------
+
+# 16 - PercentofClustersGC and MusicSum
+#(tmpMPC <- with(nedaData, cor.test(x=PercentofClustersGC, y=MusicSum))) # do the correlation for neda's data
+
+#with(nedaData, cor.test(x=PercentofClustersGC, y=MusicSum)) # do the correlation
+#ggplot(data=nedaData, aes(x=PercentofClustersGC, y=MusicSum)) + # start a ggplot
+#  geom_point(col="steelblue1") + # add the Neda data
+#  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+#  annotate(geom="text", x=6.5, y=186, size=4.5, label= 
+#             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+#  theme_bw() + # make it simple
+#  theme(axis.text=element_text(size=13),
+#        axis.title=element_text(size=13,face="bold"))
+#ggsave("correlation_PercentofClustersGCxMusicSum_raw.png", width=5, height=5)
+
+#mean(nedaData$PercentClustersGC, na.rm = TRUE)
+#sd(nedaData$PercentClustersGC, na.rm = TRUE)
 
 
 ##### Additional Age and Creativity Correlations -------------------------------
@@ -1971,18 +2984,18 @@ ggsave("correlation_AgexNumberofGalleries_raw.png", width=5, height=5)
 ------
 
 # 19 - Age and NumberofClusters
-(tmpMPC <- with(nedaData, cor.test(x=Age, y=NumberofClusters))) # do the correlation for neda's data
+#(tmpMPC <- with(nedaData, cor.test(x=Age, y=NumberofClusters))) # do the correlation for neda's data
 
-with(nedaData, cor.test(x=Age, y=NumberofClusters)) # do the correlation
-ggplot(data=nedaData, aes(x=Age, y=NumberofClusters)) + # start a ggplot
-  geom_point(col="steelblue1") + # add the Neda data
-  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
-  annotate(geom="text", x=39, y=34, size=4.5, label= 
-             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
-  theme_bw() + # make it simple
-  theme(axis.text=element_text(size=15),
-        axis.title=element_text(size=15,face="bold"))
-ggsave("correlation_AgexNumberofClusters_raw.png", width=5, height=5)
+#with(nedaData, cor.test(x=Age, y=NumberofClusters)) # do the correlation
+#ggplot(data=nedaData, aes(x=Age, y=NumberofClusters)) + # start a ggplot
+#  geom_point(col="steelblue1") + # add the Neda data
+#  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+#  annotate(geom="text", x=39, y=34, size=4.5, label= 
+#             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+#  theme_bw() + # make it simple
+#  theme(axis.text=element_text(size=15),
+#        axis.title=element_text(size=15,face="bold"))
+#ggsave("correlation_AgexNumberofClusters_raw.png", width=5, height=5)
 
 ------
 
@@ -2067,18 +3080,18 @@ ggsave("correlation_AgexOriginality_raw.png", width=5, height=5)
 ------
 
 # 21 - Age and PercentofClustersGC
-(tmpMPC <- with(nedaData, cor.test(x=Age, y=PercentofClustersGC))) # do the correlation for neda's data
+#(tmpMPC <- with(nedaData, cor.test(x=Age, y=PercentofClustersGC))) # do the correlation for neda's data
 
-with(nedaData, cor.test(x=Age, y=PercentofClustersGC)) # do the correlation
-ggplot(data=nedaData, aes(x=Age, y=PercentofClustersGC)) + # start a ggplot
-  geom_point(col="steelblue1") + # add the Neda data
-  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
-  annotate(geom="text", x=39, y=19.5, size=4.5, label= 
-             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
-  theme_bw() + # make it simple
-  theme(axis.text=element_text(size=15),
-        axis.title=element_text(size=15,face="bold"))
-ggsave("correlation_AgexPercentofClustersGC_raw.png", width=5, height=5)
+#with(nedaData, cor.test(x=Age, y=PercentofClustersGC)) # do the correlation
+#ggplot(data=nedaData, aes(x=Age, y=PercentofClustersGC)) + # start a ggplot
+#  geom_point(col="steelblue1") + # add the Neda data
+#  stat_smooth(method=lm, col="steelblue1") + #add the correlation line
+#  annotate(geom="text", x=39, y=19.5, size=4.5, label= 
+#             paste0("MPC: r = ",signif(as.numeric(tmpMPC$estimate),2), ", df = ",as.numeric(tmpMPC$parameter), ", p ", if(tmpMPC$p.value<0.001)("< 0.001")else(paste0("= ",signif(as.numeric(tmpMPC$p.value),2)))), color="navyblue")+
+#  theme_bw() + # make it simple
+#  theme(axis.text=element_text(size=15),
+#        axis.title=element_text(size=15,face="bold"))
+#ggsave("correlation_AgexPercentofClustersGC_raw.png", width=5, height=5)
 
 
 ##### MPC CREATIVITY REGRESSIONS WITH AGE AND GENDER AS FACTORS ----------------
@@ -2139,9 +3152,9 @@ Anova(lm.30)
 ------
   
 # 8 - NumberofClusters (IV) and Contemporary (DV)
-lm.31 <- lm(Contemporary ~ Gender+Age+NumberofClusters, data=nedaData)
-summary(lm.31)
-Anova(lm.31)
+#lm.31 <- lm(Contemporary ~ Gender+Age+NumberofClusters, data=nedaData)
+#summary(lm.31)
+#Anova(lm.31)
 
 ------
 
@@ -2160,30 +3173,30 @@ Anova(lm.31)
 ------
 
 # 9 - Age (IV) and PercentofTimeExplored (DV)
-lm.32 <- lm(PercentofTimeExplored ~ Gender+Age, data=nedaData)
-summary(lm.32)
-Anova(lm.32)
+#lm.32 <- lm(PercentofTimeExplored ~ Gender+Age, data=nedaData)
+#summary(lm.32)
+#Anova(lm.32)
 
 ------
 
 # 10 - PercentofTimeExplored (IV) and Unpretentious (DV)
-lm.33 <- lm(Unpretentious ~ Gender+Age+PercentofTimeExplored, data=nedaData)
-summary(lm.33)
-Anova(lm.33)
+#lm.33 <- lm(Unpretentious ~ Gender+Age+PercentofTimeExplored, data=nedaData)
+#summary(lm.33)
+#Anova(lm.33)
 
 ------
 
 # 11 - PercentofTimeExplored (IV) and Sophisticated (DV)
-lm.34 <- lm(Sophisticated ~ Gender+Age+PercentofTimeExplored, data=nedaData)
-summary(lm.34)
-Anova(lm.34)
+#lm.34 <- lm(Sophisticated ~ Gender+Age+PercentofTimeExplored, data=nedaData)
+#summary(lm.34)
+#Anova(lm.34)
 
 ------
 
 # 12 - PercentofTimeExplored (IV) and Arousal (DV)
-lm.35 <- lm(Arousal ~ Gender+Age+PercentofTimeExplored, data=nedaData)
-summary(lm.35)
-Anova(lm.35)
+#lm.35 <- lm(Arousal ~ Gender+Age+PercentofTimeExplored, data=nedaData)
+#summary(lm.35)
+#Anova(lm.35)
 
 ------
 
@@ -2251,9 +3264,9 @@ Anova(lm.36)
 ------
 
 # 14 - PercentofClustersGC (IV) and MusicSum (DV)
-lm.37 <- lm(MusicSum ~ Gender+Age+PercentofClustersGC, data=nedaData)
-summary(lm.37)
-Anova(lm.37)
+#lm.37 <- lm(MusicSum ~ Gender+Age+PercentofClustersGC, data=nedaData)
+#summary(lm.37)
+#Anova(lm.37)
 
 ------
 
@@ -2334,9 +3347,9 @@ summary(lm(Contemporary ~ Age+Gender+Openness+NumberofGalleries, data=nedaData))
 ------
 
 # 4 - Number of Clusters (IV) + Contemporary (DV) 
-summary(lm(Contemporary ~ Age+Gender, data=nedaData))
-summary(lm(Contemporary ~ Age+Gender+Openness, data=nedaData))
-summary(lm(Contemporary ~ Age+Gender+Openness+NumberofClusters, data=nedaData)) #significant
+#summary(lm(Contemporary ~ Age+Gender, data=nedaData))
+#summary(lm(Contemporary ~ Age+Gender+Openness, data=nedaData))
+#summary(lm(Contemporary ~ Age+Gender+Openness+NumberofClusters, data=nedaData)) #significant
 
 ------
 
@@ -2347,23 +3360,23 @@ summary(lm(Contemporary ~ Age+Gender+Openness+NumberofClusters, data=nedaData)) 
 ------  
   
 # 5 - PrecentofTimeExplored (IV) + Unpretentious (DV)
-summary(lm(Unpretentious ~ Age+Gender, data=nedaData))
-summary(lm(Unpretentious ~ Age+Gender+Openness, data=nedaData))
-summary(lm(Unpretentious ~ Age+Gender+Openness+PercentofTimeExplored, data=nedaData)) #significant
+#summary(lm(Unpretentious ~ Age+Gender, data=nedaData))
+#summary(lm(Unpretentious ~ Age+Gender+Openness, data=nedaData))
+#summary(lm(Unpretentious ~ Age+Gender+Openness+PercentofTimeExplored, data=nedaData)) #significant
 
 ------
 
 # 6 - PercentofTimeExplored (IV) + Sophisticated (DV)
-summary(lm(Sophisticated ~ Age+Gender, data=nedaData))
-summary(lm(Sophisticated ~ Age+Gender+Openness, data=nedaData))
-summary(lm(Sophisticated ~ Age+Gender+Openness+PercentofTimeExplored, data=nedaData)) #significant
+#summary(lm(Sophisticated ~ Age+Gender, data=nedaData))
+#summary(lm(Sophisticated ~ Age+Gender+Openness, data=nedaData))
+#summary(lm(Sophisticated ~ Age+Gender+Openness+PercentofTimeExplored, data=nedaData)) #significant
 
 ------
 
 # 7 - PercentofTimeExplored (IV) + Arousal (DV)
-summary(lm(Arousal ~ Age+Gender, data=nedaData))
-summary(lm(Arousal ~ Age+Gender+Openness, data=nedaData))
-summary(lm(Arousal ~ Age+Gender+Openness+PercentofTimeExplored, data=nedaData)) #significant
+#summary(lm(Arousal ~ Age+Gender, data=nedaData))
+#summary(lm(Arousal ~ Age+Gender+Openness, data=nedaData))
+#summary(lm(Arousal ~ Age+Gender+Openness+PercentofTimeExplored, data=nedaData)) #significant
 
 ------
 
@@ -2393,8 +3406,8 @@ summary(lm(Contemporary ~ Age+Gender+Openness+Originality, data=nedaData)) #sign
 ------
 
 # 9 - PercentofClustersGC (IV) + MusicSum (DV)
-summary(lm(MusicSum ~ Age+Gender, data=nedaData))
-summary(lm(MusicSum ~ Age+Gender+Openness, data=nedaData))
-summary(lm(MusicSum ~ Age+Gender+Openness+PercentofClustersGC, data=nedaData)) # not significant
+#summary(lm(MusicSum ~ Age+Gender, data=nedaData))
+#summary(lm(MusicSum ~ Age+Gender+Openness, data=nedaData))
+#summary(lm(MusicSum ~ Age+Gender+Openness+PercentofClustersGC, data=nedaData)) # not significant
 
 #----FIN-----
